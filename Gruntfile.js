@@ -56,6 +56,9 @@ var path           = require('path'),
             buildType: 'Build',
             pkg: grunt.file.readJSON('package.json'),
 
+            themeUrl: process.env.THEME_URL,
+            themeDir: "content/themes/" + path.basename(process.env.THEME_URL),
+
             // Watch files and livereload in the browser during development
             watch: {
                 handlebars: {
@@ -259,6 +262,9 @@ var path           = require('path'),
             shell: {
                 bourbon: {
                     command: 'bourbon install --path <%= paths.adminAssets %>/sass/modules/'
+                },
+                themeclone: {
+                    command: 'git clone <%= themeUrl %> <%= themeDir %>'
                 }
             },
 
